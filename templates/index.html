@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yt2mp4 - YouTube to MP4 Downloader</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fab fa-youtube"></i>
+                <h1>yt2mp4</h1>
+            </div>
+            <p class="tagline">Download YouTube videos as MP4 files</p>
+        </header>
+
+        <main class="main-content">
+            <div class="download-card">
+                <div class="card-header">
+                    <h2><i class="fas fa-download"></i> Download YouTube Video</h2>
+                    <p>Paste your YouTube URL below to convert to MP4</p>
+                </div>
+
+                <div class="card-body">
+                    <form id="downloadForm" class="download-form">
+                        <div class="input-group">
+                            <input 
+                                type="url" 
+                                id="youtubeUrl" 
+                                placeholder="https://www.youtube.com/watch?v=..." 
+                                required
+                                class="url-input"
+                            >
+                        </div>
+                        
+                        <div class="quality-selector">
+                            <label for="qualitySelect" class="quality-label">
+                                <i class="fas fa-video"></i> Video Quality:
+                            </label>
+                            <select id="qualitySelect" class="quality-select">
+                                <option value="sd">SD (480p) - Smaller file</option>
+                                <option value="hd" selected>HD (720p) - Recommended</option>
+                                <option value="fhd">Full HD (1080p) - High quality</option>
+                                <option value="4k">4K (2160p) - Ultra HD</option>
+                                <option value="best">Best Available - Maximum quality</option>
+                            </select>
+                        </div>
+                        
+                        <div class="button-group">
+                            <button type="submit" class="download-btn" id="downloadBtn">
+                                <i class="fas fa-download"></i> Download MP4
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="progress-container" id="progressContainer" style="display: none;">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <div class="progress-text" id="progressText">Processing...</div>
+                    </div>
+
+                    <div class="video-info-container" id="videoInfoContainer" style="display: none;">
+                        <div class="video-info-card">
+                            <div class="video-thumbnail">
+                                <img id="videoThumbnail" src="" alt="Video thumbnail">
+                            </div>
+                            <div class="video-details">
+                                <h3 id="videoTitle"></h3>
+                                <div class="video-meta">
+                                    <span id="videoUploader"></span>
+                                    <span id="videoDuration"></span>
+                                    <span id="videoViews"></span>
+                                </div>
+                                <p id="videoDescription"></p>
+                                <div class="confirm-download">
+                                    <button type="button" class="confirm-btn" id="confirmDownloadBtn">
+                                        <i class="fas fa-download"></i> Confirm Download
+                                    </button>
+                                    <button type="button" class="cancel-btn" id="cancelBtn">
+                                        <i class="fas fa-times"></i> Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="result-container" id="resultContainer" style="display: none;">
+                        <div class="success-message" id="successMessage">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Download completed successfully!</span>
+                        </div>
+                        <a href="#" class="download-link" id="downloadLink">
+                            <i class="fas fa-file-download"></i>
+                            <span id="fileName"></span>
+                        </a>
+                    </div>
+
+                    <div class="error-container" id="errorContainer" style="display: none;">
+                        <div class="error-message">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span id="errorText"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <div class="features">
+                        <h3><i class="fas fa-star"></i> Features</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> High quality MP4 downloads</li>
+                            <li><i class="fas fa-check"></i> Fast conversion process</li>
+                            <li><i class="fas fa-check"></i> No registration required</li>
+                            <li><i class="fas fa-check"></i> Clean and simple interface</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="instructions">
+                <h3><i class="fas fa-info-circle"></i> How to use:</h3>
+                <ol>
+                    <li>Copy the YouTube video URL from your browser</li>
+                    <li>Paste it in the input field above</li>
+                    <li>Click "Download MP4" button</li>
+                    <li>Wait for processing to complete</li>
+                    <li>Download your MP4 file</li>
+                </ol>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 yt2mp4 - YouTube to MP4 Downloader. All rights reserved.</p>
+            <p class="disclaimer">
+                This service is for personal use only. Please respect copyright laws.
+            </p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
